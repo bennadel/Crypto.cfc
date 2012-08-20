@@ -23,6 +23,44 @@ component
 	// ---
 
 
+	// I hash the given input using the MD5 encoding algorithm and the given secret key. By 
+	// default, the hash is returned as a HEX-encoded string.
+	function hmacMd5(
+		String key,
+		String input,
+		String encoding = "hex"
+		){
+
+		// Hash the input using Hmac MD5.
+		var authenticationCode = this._hashInputWithAlgorithmAndKey( "HmacMD5", key, input );
+
+		// Return the authentication code in the appropriate encoding.
+		return(
+			this._encodeByteArray( authenticationCode, encoding )
+		);
+
+	}
+
+
+	// I hash the given input using the Sha-1 encoding algorithm and the given secret key. By 
+	// default, the hash is returned as a HEX-encoded string.
+	function hmacSha1(
+		String key,
+		String input,
+		String encoding = "hex"
+		){
+
+		// Hash the input using Hmac Sha-1.
+		var authenticationCode = this._hashInputWithAlgorithmAndKey( "HmacSHA1", key, input );
+
+		// Return the authentication code in the appropriate encoding.
+		return(
+			this._encodeByteArray( authenticationCode, encoding )
+		);
+
+	}
+
+
 	// I hash the given input using the Sha-256 encoding algorithm and the given secret key. By 
 	// default, the hash is returned as a HEX-encoded string.
 	function hmacSha256(
